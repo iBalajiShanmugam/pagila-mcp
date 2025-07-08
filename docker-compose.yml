@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: pagila_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: balaji
+      POSTGRES_PASSWORD: balaji123
+      POSTGRES_DB: pagila
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./pagila.sql:/docker-entrypoint-initdb.d/pagila.sql
+
+volumes:
+  pgdata:
